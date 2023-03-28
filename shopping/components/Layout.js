@@ -8,7 +8,7 @@ export default function Layout({ children, title }) {
             </Head>
             <div className="flex min-h-screen flex-col justify-between">
                 <header>
-                    <nav className="flex h-14 px-8 justify-between items-center border-b-4">
+                    <nav className="flex h-14 px-8 justify-between items-center border-b-4 bg-white">
                         <Link href="/">
                             <span className="text-lg font-bold">Shopping</span>
                         </Link>
@@ -23,7 +23,9 @@ export default function Layout({ children, title }) {
                     </nav>
                 </header>
                 <main className="container m-auto mt-4 px-4">{children}</main>
-                <footer className="flex justify-center items-center h-10">footer</footer>
+                <footer className="flex justify-center items-center h-10">
+                    footer
+                </footer>
             </div>
         </>
     );
