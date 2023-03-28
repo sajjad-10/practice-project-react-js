@@ -13,13 +13,17 @@ export default function Layout({ children, title }) {
                             <span className="text-lg font-bold">Shopping</span>
                         </Link>
                         <div>
-                        <Link href="/cart" className="p-2">Cart</Link>
-                        <Link href="/login" className="p-2">login</Link>
+                            <Link href="/cart" className="p-2">
+                                Cart
+                            </Link>
+                            <Link href="/login" className="p-2">
+                                login
+                            </Link>
                         </div>
                     </nav>
                 </header>
-                <main>{children}</main>
-                <footer>footer</footer>
+                <main className="container m-auto mt-4 px-4">{children}</main>
+                <footer className="flex justify-center items-center h-10">footer</footer>
             </div>
         </>
     );
