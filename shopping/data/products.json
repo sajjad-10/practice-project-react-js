@@ -6,15 +6,15 @@
         "description": "New Book",
         "cat": "Books",
         "count": 10,
-        "image": "images/book-1.jpg"
+        "image": "/images/book.jpeg"
     },
     {
-        "title": "Book 1",
+        "title": "Book 2",
         "price": 299,
-        "slug": "book-1",
+        "slug": "book-2",
         "description": "New Book",
         "cat": "Books",
         "count": 10,
-        "image": "images/book-2.jpg"
+        "image": "/images/book.jpeg"
     }
 ]
