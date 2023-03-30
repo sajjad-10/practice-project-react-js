@@ -1,5 +1,11 @@
 const Product = () => {
-    return <div>Product Name: Book</div>;
+    const price = 89;
+    return (
+        <div>
+            <p>Product Name: Book</p>
+            <p>Product Name: {price}</p>
+        </div>
+    );
 };
 
 export default Product;
