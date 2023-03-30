@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const element = React.createElement(
-    "div",
-    { id: "main", className: "container" },
-    "Hello World"
-);
+const App = () => {
+    return React.createElement(
+        "div",
+        { id: "main", className: "container" },
+        "Hello World"
+    );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(element);
+root.render(<App />);
