@@ -8,6 +8,15 @@ const App = () => {
             { title: "Book 2", price: 88 },
         ],
     });
+
+    const changePriceHandler = () => {
+        setProductState({
+            product: [
+                { title: "Book 1", price: 199 },
+                { title: "Book 2", price: 188 },
+            ],
+        });
+    };
     return (
         <div id="main" className="container">
             <Product
@@ -20,6 +29,7 @@ const App = () => {
                 title={productState.product[1].title}
                 price={productState.product[1].price}
             />
+            <button onClick={changePriceHandler}>Change Price</button>
         </div>
     );
 };
