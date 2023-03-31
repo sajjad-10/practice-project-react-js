@@ -11,14 +11,6 @@ const App = () => {
     });
     const [showProduct, setShowProduct] = useState(false);
 
-    const changePriceHandler = (newTitle1, newTitle2) => {
-        setProductState({
-            product: [
-                { title: newTitle1, price: 199 },
-                { title: newTitle2, price: 188 },
-            ],
-        });
-    };
     const changeTitleHandler = (event) => {
         setProductState({
             product: [
@@ -39,12 +31,6 @@ const App = () => {
                         <Product
                             title={item.title}
                             price={item.price}
-                            click={() =>
-                                changePriceHandler(
-                                    "title change 1",
-                                    "title change 2"
-                                )
-                            }
                             change={(e) => changeTitleHandler(e)}
                         />
                     );
@@ -65,9 +51,6 @@ const App = () => {
     };
     return (
         <div id="main" className="center">
-            <button style={btnStyles} onClick={changePriceHandler}>
-                Change Price
-            </button>
             <button style={btnStyles} onClick={toggleProductHandler}>
                 Show/Hide Products
             </button>

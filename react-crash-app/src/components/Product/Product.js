@@ -3,7 +3,7 @@ const Product = (props) => {
     return (
         <div className='product'>
             <p>Product Name: {props.title}</p>
-            <p onClick={props.click}>Product Name: {props.price}</p>
+            <p >Product Name: {props.price}</p>
             <p>{props.children}</p>
             <input type="text" onChange={props.change}></input>
         </div>
