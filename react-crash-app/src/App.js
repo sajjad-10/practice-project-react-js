@@ -3,12 +3,11 @@ import "./App.css";
 import Product from "./components/Product/Product";
 
 const App = () => {
-    const [productState, setProductState] = useState({
-        product: [
-            { title: "Book 1", price: 99 },
-            { title: "Book 2", price: 88 },
-        ],
-    });
+    const initialList = [
+        { title: "Book 1", price: 99 },
+        { title: "Book 2", price: 88 },
+    ];
+    const [productState, setProductState] = useState(initialList);
     const [showProduct, setShowProduct] = useState(false);
 
     const changeTitleHandler = (event) => {
@@ -22,16 +21,22 @@ const App = () => {
     const toggleProductHandler = () => {
         setShowProduct((productState) => !productState);
     };
+    const handelProductDelete = (productIndex) => {
+        const products = [...productState];
+        products.splice(productIndex, 1);
+        setProductState(products);
+    };
     let products = null;
     if (showProduct) {
         products = (
             <div>
-                {productState.product.map((item) => {
+                {productState.map((item, index) => {
                     return (
                         <Product
                             title={item.title}
                             price={item.price}
                             change={(e) => changeTitleHandler(e)}
+                            click={() => handelProductDelete(index)}
                         />
                     );
                 })}
