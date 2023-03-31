@@ -28,8 +28,29 @@ const App = () => {
         });
     };
     const toggleProductHandler = () => {
-      setShowProduct(productState => !productState)
+        setShowProduct((productState) => !productState);
     };
+    let products = null;
+    if (showProduct) {
+        products = (
+            <div>
+                <Product
+                    title={productState.product[0].title}
+                    price={productState.product[0].price}
+                    change={(e) => changeTitleHandler(e)}
+                >
+                    Discount: 20%
+                </Product>
+                <Product
+                    title={productState.product[1].title}
+                    price={productState.product[1].price}
+                    click={() =>
+                        changePriceHandler("title change 1", "title change 2")
+                    }
+                />
+            </div>
+        );
+    }
     const btnStyles = {
         backgroundColor: "#7b1fa2",
         color: "#fff",
@@ -49,27 +70,7 @@ const App = () => {
             <button style={btnStyles} onClick={toggleProductHandler}>
                 Show/Hide Products
             </button>
-            {showProduct ? (
-                <div>
-                    <Product
-                        title={productState.product[0].title}
-                        price={productState.product[0].price}
-                        change={(e) => changeTitleHandler(e)}
-                    >
-                        Discount: 20%
-                    </Product>
-                    <Product
-                        title={productState.product[1].title}
-                        price={productState.product[1].price}
-                        click={() =>
-                            changePriceHandler(
-                                "title change 1",
-                                "title change 2"
-                            )
-                        }
-                    />
-                </div>
-            ) : null}
+            {products}
         </div>
     );
 };
