@@ -10,13 +10,17 @@ const App = () => {
     const [productState, setProductState] = useState(initialList);
     const [showProduct, setShowProduct] = useState(false);
 
-    const changeTitleHandler = (event) => {
-        setProductState({
-            product: [
-                { title: event.target.value, price: 99 },
-                { title: "Book 2", price: 88 },
-            ],
+    const changeTitleHandler = (event, id) => {
+        const productIndex = productState.findIndex((item) => {
+            return item.id === id;
         });
+
+        const product = productState[productIndex];
+        product.title = event.target.value;
+
+        const products = [...productState];
+        products[productIndex] = product;
+        setProductState(products)
     };
     const toggleProductHandler = () => {
         setShowProduct((productState) => !productState);
@@ -35,7 +39,7 @@ const App = () => {
                         <Product
                             title={item.title}
                             price={item.price}
-                            change={(e) => changeTitleHandler(e)}
+                            change={(e) => changeTitleHandler(e, item.id)}
                             click={() => handelProductDelete(index)}
                             key={item.id}
                         />
