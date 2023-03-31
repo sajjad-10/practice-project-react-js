@@ -34,20 +34,21 @@ const App = () => {
     if (showProduct) {
         products = (
             <div>
-                <Product
-                    title={productState.product[0].title}
-                    price={productState.product[0].price}
-                    change={(e) => changeTitleHandler(e)}
-                >
-                    Discount: 20%
-                </Product>
-                <Product
-                    title={productState.product[1].title}
-                    price={productState.product[1].price}
-                    click={() =>
-                        changePriceHandler("title change 1", "title change 2")
-                    }
-                />
+                {productState.product.map((item) => {
+                    return (
+                        <Product
+                            title={item.title}
+                            price={item.price}
+                            click={() =>
+                                changePriceHandler(
+                                    "title change 1",
+                                    "title change 2"
+                                )
+                            }
+                            change={(e) => changeTitleHandler(e)}
+                        />
+                    );
+                })}
             </div>
         );
     }
