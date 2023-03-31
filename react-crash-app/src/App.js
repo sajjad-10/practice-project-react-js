@@ -18,18 +18,29 @@ const App = () => {
             ],
         });
     };
+    const changeTitleHandler = (event) => {
+        setProductState({
+            product: [
+                { title: event.target.value, price: 99 },
+                { title: "Book 2", price: 88 },
+            ],
+        });
+    };
     return (
         <div id="main" className="center">
             <Product
                 title={productState.product[0].title}
                 price={productState.product[0].price}
+                change={(e)=>changeTitleHandler(e)}
             >
                 Discount: 20%
             </Product>
             <Product
                 title={productState.product[1].title}
                 price={productState.product[1].price}
-                click={() => changePriceHandler('title change 1', "title change 2")}
+                click={() =>
+                    changePriceHandler("title change 1", "title change 2")
+                }
             />
             <button onClick={changePriceHandler}>Change Price</button>
         </div>
