@@ -4,8 +4,8 @@ import Product from "./components/Product/Product";
 
 const App = () => {
     const initialList = [
-        { title: "Book 1", price: 99 },
-        { title: "Book 2", price: 88 },
+        { id: 1, title: "Book 1", price: 99 },
+        { id: 2, title: "Book 2", price: 88 },
     ];
     const [productState, setProductState] = useState(initialList);
     const [showProduct, setShowProduct] = useState(false);
@@ -37,6 +37,7 @@ const App = () => {
                             price={item.price}
                             change={(e) => changeTitleHandler(e)}
                             click={() => handelProductDelete(index)}
+                            key={item.id}
                         />
                     );
                 })}
