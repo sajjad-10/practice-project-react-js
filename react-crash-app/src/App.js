@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './App.css'
+import "./App.css";
 import Product from "./components/Product/Product";
 
 const App = () => {
@@ -10,11 +10,11 @@ const App = () => {
         ],
     });
 
-    const changePriceHandler = () => {
+    const changePriceHandler = (newTitle1, newTitle2) => {
         setProductState({
             product: [
-                { title: "Book 1", price: 199 },
-                { title: "Book 2", price: 188 },
+                { title: newTitle1, price: 199 },
+                { title: newTitle2, price: 188 },
             ],
         });
     };
@@ -29,7 +29,7 @@ const App = () => {
             <Product
                 title={productState.product[1].title}
                 price={productState.product[1].price}
-                click={changePriceHandler}
+                click={() => changePriceHandler('title change 1', "title change 2")}
             />
             <button onClick={changePriceHandler}>Change Price</button>
         </div>
