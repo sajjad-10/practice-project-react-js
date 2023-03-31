@@ -9,6 +9,7 @@ const App = () => {
             { title: "Book 2", price: 88 },
         ],
     });
+    const [showProduct, setShowProduct] = useState(false);
 
     const changePriceHandler = (newTitle1, newTitle2) => {
         setProductState({
@@ -26,6 +27,9 @@ const App = () => {
             ],
         });
     };
+    const toggleProductHandler = () => {
+      setShowProduct(productState => !productState)
+    };
     const btnStyles = {
         backgroundColor: "#7b1fa2",
         color: "#fff",
@@ -35,24 +39,37 @@ const App = () => {
         borderRadius: "3px",
         padding: "0.6rem",
         margin: "0.6rem auto",
+        marginLeft: "0.6rem",
     };
     return (
         <div id="main" className="center">
-            <Product
-                title={productState.product[0].title}
-                price={productState.product[0].price}
-                change={(e) => changeTitleHandler(e)}
-            >
-                Discount: 20%
-            </Product>
-            <Product
-                title={productState.product[1].title}
-                price={productState.product[1].price}
-                click={() =>
-                    changePriceHandler("title change 1", "title change 2")
-                }
-            />
-            <button style={btnStyles} onClick={changePriceHandler}>Change Price</button>
+            <button style={btnStyles} onClick={changePriceHandler}>
+                Change Price
+            </button>
+            <button style={btnStyles} onClick={toggleProductHandler}>
+                Show/Hide Products
+            </button>
+            {showProduct ? (
+                <div>
+                    <Product
+                        title={productState.product[0].title}
+                        price={productState.product[0].price}
+                        change={(e) => changeTitleHandler(e)}
+                    >
+                        Discount: 20%
+                    </Product>
+                    <Product
+                        title={productState.product[1].title}
+                        price={productState.product[1].price}
+                        click={() =>
+                            changePriceHandler(
+                                "title change 1",
+                                "title change 2"
+                            )
+                        }
+                    />
+                </div>
+            ) : null}
         </div>
     );
 };
