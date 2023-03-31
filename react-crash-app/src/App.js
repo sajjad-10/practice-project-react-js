@@ -26,12 +26,22 @@ const App = () => {
             ],
         });
     };
+    const btnStyles = {
+        backgroundColor: "#7b1fa2",
+        color: "#fff",
+        font: "inherit",
+        border: "none",
+        outline: "none",
+        borderRadius: "3px",
+        padding: "0.6rem",
+        margin: "0.6rem auto",
+    };
     return (
         <div id="main" className="center">
             <Product
                 title={productState.product[0].title}
                 price={productState.product[0].price}
-                change={(e)=>changeTitleHandler(e)}
+                change={(e) => changeTitleHandler(e)}
             >
                 Discount: 20%
             </Product>
@@ -42,7 +52,7 @@ const App = () => {
                     changePriceHandler("title change 1", "title change 2")
                 }
             />
-            <button onClick={changePriceHandler}>Change Price</button>
+            <button style={btnStyles} onClick={changePriceHandler}>Change Price</button>
         </div>
     );
 };
