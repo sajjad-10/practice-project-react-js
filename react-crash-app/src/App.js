@@ -29,6 +29,7 @@ const App = () => {
             <Product
                 title={productState.product[1].title}
                 price={productState.product[1].price}
+                click={changePriceHandler}
             />
             <button onClick={changePriceHandler}>Change Price</button>
         </div>
