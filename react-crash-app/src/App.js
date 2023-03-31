@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './App.css'
 import Product from "./components/Product/Product";
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
         });
     };
     return (
-        <div id="main" className="container">
+        <div id="main" className="center">
             <Product
                 title={productState.product[0].title}
                 price={productState.product[0].price}

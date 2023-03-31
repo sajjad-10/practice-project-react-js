@@ -1,6 +1,7 @@
+import './Product.css'
 const Product = (props) => {
     return (
-        <div>
+        <div className='product'>
             <p>Product Name: {props.title}</p>
             <p>Product Name: {props.price}</p>
             <p>{props.children}</p>
