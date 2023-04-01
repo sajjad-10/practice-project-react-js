@@ -28,6 +28,7 @@ const Main = (props) => {
             <button ref={btnRef} style={btnStyles} onClick={props.click}>
                 Show/Hide Products
             </button>
+            <button onClick={props.login}>Login</button>
         </>
     );
 };

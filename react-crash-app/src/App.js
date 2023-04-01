@@ -12,6 +12,7 @@ const App = () => {
     const [productState, setProductState] = useState(initialList);
     const [showProduct, setShowProduct] = useState(false);
     const [showMain, setShowMain] = useState(true);
+    const [auth, setAuth] = useState(false);
 
     const changeTitleHandler = (event, id) => {
         const productIndex = productState.findIndex((item) => {
@@ -41,10 +42,14 @@ const App = () => {
                     products={productState}
                     click={handelProductDelete}
                     change={changeTitleHandler}
+                    isAuth={auth}
                 />
             </div>
         );
     }
+    const loginHandler = () => {
+        setAuth((auth) => !auth);
+    };
     return (
         <div id="main" className="center">
             <button
@@ -55,11 +60,17 @@ const App = () => {
                 Remove Main
             </button>
             {showMain ? (
-                <><Main products={productState} click={toggleProductHandler} />{products}</>
+                <>
+                    <Main
+                        products={productState}
+                        click={toggleProductHandler}
+                        login={loginHandler}
+                    />
+                    {products}
+                </>
             ) : (
                 ""
             )}
-            
         </div>
     );
 };
