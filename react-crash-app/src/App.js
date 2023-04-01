@@ -3,6 +3,7 @@ import "./App.css";
 import Main from "./components/Main/Main";
 // import Product from "./components/Product/Product";
 import ProductList from "./components/ProductList/ProductList";
+import AuthContext from "./context/auth-context";
 
 const App = () => {
     const initialList = [
@@ -59,18 +60,19 @@ const App = () => {
             >
                 Remove Main
             </button>
-            {showMain ? (
-                <>
-                    <Main
-                        products={productState}
-                        click={toggleProductHandler}
-                        login={loginHandler}
-                    />
-                    {products}
-                </>
-            ) : (
-                ""
-            )}
+            <AuthContext.Provider value={{ auth: auth, login: loginHandler }}>
+                {showMain ? (
+                    <>
+                        <Main
+                            products={productState}
+                            click={toggleProductHandler}
+                        />
+                        {products}
+                    </>
+                ) : (
+                    ""
+                )}
+            </AuthContext.Provider>
         </div>
     );
 };

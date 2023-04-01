@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
+import AuthContext from "../../context/auth-context";
 const Main = (props) => {
     const btnRef = useRef(null);
     useEffect(() => {
         console.log("Main.js useEffect");
         setTimeout(() => {
             // alert("HTTP Request!");
-            btnRef.current.click()
+            btnRef.current.click();
         }, 2000);
         return () => {
             console.log("Main.js cleanUp");
@@ -28,7 +29,9 @@ const Main = (props) => {
             <button ref={btnRef} style={btnStyles} onClick={props.click}>
                 Show/Hide Products
             </button>
-            <button onClick={props.login}>Login</button>
+            <AuthContext.Consumer>
+                {(context) => <button onClick={context.login}>Login</button>}
+            </AuthContext.Consumer>
         </>
     );
 };

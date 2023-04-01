@@ -8,7 +8,6 @@ const ProductList = (props) => {
                 change={(e) => props.change(e, item.id)}
                 click={() => props.click(index)}
                 key={item.id}
-                isAuth={props.isAuth}
             />
         );
     });
