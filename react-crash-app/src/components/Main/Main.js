@@ -1,7 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 import AuthContext from "../../context/auth-context";
 const Main = (props) => {
     const btnRef = useRef(null);
+
+    const authContext = useContext(AuthContext);
+    console.log(authContext);
+
     useEffect(() => {
         console.log("Main.js useEffect");
         setTimeout(() => {
@@ -29,9 +33,7 @@ const Main = (props) => {
             <button ref={btnRef} style={btnStyles} onClick={props.click}>
                 Show/Hide Products
             </button>
-            <AuthContext.Consumer>
-                {(context) => <button onClick={context.login}>Login</button>}
-            </AuthContext.Consumer>
+            <button onClick={authContext.login}>Login</button>
         </>
     );
 };
