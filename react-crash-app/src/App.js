@@ -46,7 +46,7 @@ const App = () => {
     }
     return (
         <div id="main" className="center">
-            <Main click={toggleProductHandler} /> {products}
+            <Main products={productState} click={toggleProductHandler} /> {products}
         </div>
     );
 };
