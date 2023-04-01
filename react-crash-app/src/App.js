@@ -11,6 +11,7 @@ const App = () => {
     ];
     const [productState, setProductState] = useState(initialList);
     const [showProduct, setShowProduct] = useState(false);
+    const [showMain, setShowMain] = useState(true);
 
     const changeTitleHandler = (event, id) => {
         const productIndex = productState.findIndex((item) => {
@@ -46,7 +47,19 @@ const App = () => {
     }
     return (
         <div id="main" className="center">
-            <Main products={productState} click={toggleProductHandler} /> {products}
+            <button
+                onClick={() => {
+                    setShowMain((showMain) => !showMain);
+                }}
+            >
+                Remove Main
+            </button>
+            {showMain ? (
+                <><Main products={productState} click={toggleProductHandler} />{products}</>
+            ) : (
+                ""
+            )}
+            
         </div>
     );
 };

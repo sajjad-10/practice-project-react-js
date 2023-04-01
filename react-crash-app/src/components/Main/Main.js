@@ -5,6 +5,9 @@ const Main = (props) => {
         setTimeout(() => {
             alert("HTTP Request!");
         }, 2000);
+        return ()=>{
+            console.log("Main.js cleanUp");
+        }
     }, []);
     const btnStyles = {
         backgroundColor: "#7b1fa2",
