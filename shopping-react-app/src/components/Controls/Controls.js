@@ -7,11 +7,22 @@ const products = [
     { title: "Product 3", type: "product3" },
     { title: "Product 4", type: "product4" },
 ];
-const Controls = () => {
+const Controls = (props) => {
     return (
         <div className="controls">
             {products.map((item) => {
-                return <Builder key={item.title} title={item.title} />;
+                return (
+                    <Builder
+                        key={item.title}
+                        title={item.title}
+                        add={() => {
+                            props.productAdd(item.type);
+                        }}
+                        remove={() => {
+                            props.productRemove(item.type);
+                        }}
+                    />
+                );
             })}
         </div>
     );
