@@ -25,7 +25,7 @@ const Controls = (props) => {
                     />
                 );
             })}
-            <div className="order-btn">Order</div>
+            <div className="order-btn" onClick={props.order}>Order</div>
         </div>
     );
 };

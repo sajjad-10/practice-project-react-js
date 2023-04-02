@@ -19,6 +19,7 @@ const Shopping = () => {
         product4: 0,
     });
     const [totalPrice, setTotalPrice] = useState(0);
+    const [purchased, setPurchased] = useState(false);
 
     const addProductHandler = (type) => {
         /* *Calculate the number of product */
@@ -53,15 +54,20 @@ const Shopping = () => {
         console.log("remove");
     };
 
+    const purchasedHandler=()=>{
+        setPurchased((purchased) => !purchased)
+    }
+
     return (
         <Wrapper>
-            <Modal>
+            <Modal show={purchased}>
                 <Order products={products} />
             </Modal>
             <Controls
                 productAdd={addProductHandler}
                 productRemove={removeProductHandler}
                 price={totalPrice}
+                order={purchasedHandler}
             />
         </Wrapper>
     );
