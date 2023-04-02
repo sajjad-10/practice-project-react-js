@@ -10,7 +10,7 @@ const products = [
 const Controls = (props) => {
     return (
         <div className="controls">
-            <p>Total Price: {props.price}</p>
+            <p className="price">Total Price: {props.price}</p>
             {products.map((item) => {
                 return (
                     <Builder
@@ -25,6 +25,7 @@ const Controls = (props) => {
                     />
                 );
             })}
+            <div className="order-btn">Order</div>
         </div>
     );
 };
