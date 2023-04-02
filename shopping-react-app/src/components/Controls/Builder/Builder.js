@@ -4,7 +4,7 @@ const Builder = (props) => {
         <div className="builder">
             <div>{props.title}</div>
             <button>Add</button>
-            <button>Add</button>
+            <button>Remove</button>
         </div>
     );
 };
