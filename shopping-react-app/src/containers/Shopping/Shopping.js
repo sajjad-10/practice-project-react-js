@@ -73,6 +73,7 @@ const Shopping = () => {
                     products={products}
                     continue={purchaseContinueHandler}
                     cancel={modalCloseHandler}
+                    total={totalPrice}
                 />
             </Modal>
             <Controls

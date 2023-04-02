@@ -14,7 +14,8 @@ export default function Order(props) {
         <Wrapper>
             <h3>Order</h3>
             <ul>{summery}</ul>
-            <p></p>
+            <p>Total Price: {props.total}</p>
+            <p>Continue ?</p>
             <Button btnType="success" click={props.continue}>
                 Yes
             </Button>
