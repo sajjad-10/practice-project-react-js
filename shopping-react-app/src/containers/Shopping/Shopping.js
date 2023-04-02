@@ -54,13 +54,17 @@ const Shopping = () => {
         console.log("remove");
     };
 
-    const purchasedHandler=()=>{
-        setPurchased((purchased) => !purchased)
-    }
+    const purchasedHandler = () => {
+        setPurchased((purchased) => !purchased);
+    };
+
+    const modalCloseHandler = () => {
+        setPurchased(false);
+    };
 
     return (
         <Wrapper>
-            <Modal show={purchased}>
+            <Modal show={purchased} modalClose={modalCloseHandler}>
                 <Order products={products} />
             </Modal>
             <Controls
