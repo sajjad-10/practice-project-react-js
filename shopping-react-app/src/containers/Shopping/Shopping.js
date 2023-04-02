@@ -3,10 +3,10 @@ import Wrapper from "../../hoc/Wrapper";
 import Controls from "../../components/Controls/Controls";
 
 const prices = {
-    products1: 29,
-    products2: 39,
-    products3: 49,
-    products4: 59,
+    product1: 29,
+    product2: 39,
+    product3: 49,
+    product4: 59,
 };
 
 const Shopping = () => {
@@ -32,7 +32,6 @@ const Shopping = () => {
 
         setTotalPrice(newPrice);
         setProducts(updatedProducts);
-        console.log("add");
     };
 
     const removeProductHandler = (type) => {
@@ -54,7 +53,11 @@ const Shopping = () => {
 
     return (
         <Wrapper>
-            <Controls productAdd={addProductHandler}productRemove={removeProductHandler} />
+            <Controls
+                productAdd={addProductHandler}
+                productRemove={removeProductHandler}
+                price={totalPrice}
+            />
         </Wrapper>
     );
 };
