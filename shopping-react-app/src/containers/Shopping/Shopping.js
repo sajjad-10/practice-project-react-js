@@ -62,10 +62,18 @@ const Shopping = () => {
         setPurchased(false);
     };
 
+    const purchaseContinueHandler = () => {
+        console.log("purchaseContinueHandler");
+    };
+
     return (
         <Wrapper>
             <Modal show={purchased} modalClose={modalCloseHandler}>
-                <Order products={products} />
+                <Order
+                    products={products}
+                    continue={purchaseContinueHandler}
+                    cancel={modalCloseHandler}
+                />
             </Modal>
             <Controls
                 productAdd={addProductHandler}
