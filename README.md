@@ -6,7 +6,16 @@ About: A collection of short projects for practicing and learning react.js & nex
 
 #### project list
 
-| Name                                                                                                   | Description                   |
-| :----------------------------------------------------------------------------------------------------- | :---------------------------- |
-| [React Crash app](https://github.com/sajjad-10/practice-project-react-js/tree/main/react-crash-app)    | React **Training**            |
-| [React Crash app](https://github.com/sajjad-10/practice-project-react-js/tree/main/shopping-react-app) | simple React shopping website |
+| Name                                                                                                    | Description                   |
+| :------------------------------------------------------------------------------------------------------ | :---------------------------- |
+| [React Crash app](https://github.com/sajjad-10/practice-project-react-js/tree/main/react-crash-app)     | React **Training**            |
+| [Shopping website](https://github.com/sajjad-10/practice-project-react-js/tree/main/shopping-react-app) | simple React shopping website |
+
+## Next
+
+#### project list
+
+| Name                                                                                          | Description                  |
+| :-------------------------------------------------------------------------------------------- | :--------------------------- |
+| [Next Crash app](https://github.com/sajjad-10/)                                               | Next **Training**            |
+| [Shopping website](https://github.com/sajjad-10/practice-project-react-js/tree/main/shopping) | simple Next shopping website |
