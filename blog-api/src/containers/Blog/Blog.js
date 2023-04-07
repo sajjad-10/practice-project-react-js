@@ -12,7 +12,7 @@ const Blog = () => {
     const [error, setError] = useState(false);
     useEffect(() => {
         axios
-            .get("https://jsonplaceholder.typicode.com/postsسسیس")
+            .get("/posts")
             .then((response) => {
                 const posts = response.data.slice(0, 4);
                 const updatedPosts = posts.map((item) => {

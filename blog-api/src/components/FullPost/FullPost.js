@@ -8,7 +8,7 @@ const FullPost = (props) => {
             if (!loadedPost || (loadedPost && loadedPost.id !== props.id)) {
                 axios
                     .get(
-                        `https://jsonplaceholder.typicode.com/posts/${props.id}`
+                        `/posts/${props.id}`
                     )
                     .then((response) => {
                         console.log(response);
@@ -19,7 +19,7 @@ const FullPost = (props) => {
     });
     const deletePostHandler = () => {
         axios
-            .delete(`https://jsonplaceholder.typicode.com/posts/${props.id}`)
+            .delete(`/posts/${props.id}`)
             .then((response) => {
                 console.log(response);
             });
