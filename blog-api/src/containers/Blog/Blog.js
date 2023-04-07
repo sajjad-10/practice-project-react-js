@@ -12,18 +12,22 @@ const Blog = () => {
         axios
             .get("https://jsonplaceholder.typicode.com/posts")
             .then((response) => {
-                setPosts(response.data);
-                console.log(response);
+                const posts = response.data.slice(0, 4);
+                const updatedPosts = posts.map((item) => {
+                    return {
+                        ...item,
+                        author: "Sajjad",
+                    };
+                });
+                setPosts(updatedPosts);
             });
     }, []);
     const postsComponent = posts.map((item) => {
-       return <Post key={item.id} title={item.title} />;
+        return <Post key={item.id} author={item.author} title={item.title} />;
     });
     return (
         <div>
-            <section className="posts">
-                {postsComponent}
-            </section>
+            <section className="posts">{postsComponent}</section>
             <section>
                 <FullPost />
             </section>
