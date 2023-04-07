@@ -8,6 +8,7 @@ import "./Blog.css";
 
 const Blog = () => {
     const [posts, setPosts] = useState([]);
+    const [selectedPostID, setSelectedPostID] = useState(null);
     useEffect(() => {
         axios
             .get("https://jsonplaceholder.typicode.com/posts")
@@ -22,14 +23,25 @@ const Blog = () => {
                 setPosts(updatedPosts);
             });
     }, []);
+    const handleDisplayPost = (id) => {
+        console.log(id);
+        setSelectedPostID(id);
+    };
     const postsComponent = posts.map((item) => {
-        return <Post key={item.id} author={item.author} title={item.title} />;
+        return (
+            <Post
+                key={item.id}
+                author={item.author}
+                title={item.title}
+                click={() => handleDisplayPost(item.id)}
+            />
+        );
     });
     return (
         <div>
             <section className="posts">{postsComponent}</section>
             <section>
-                <FullPost />
+                <FullPost id={selectedPostID} />
             </section>
             <section>
                 <NewPost />
