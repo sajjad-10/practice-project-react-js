@@ -1,9 +1,23 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./NewPost.css";
 const NewPost = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [author, setAuthor] = useState("Sajjad");
+
+    const postDataHandler = () => {
+        const data = {
+            title: title,
+            body: content,
+            author: author,
+        };
+        axios
+            .post("https://jsonplaceholder.typicode.com/posts", data)
+            .then((response) => {
+                console.log(response);
+            });
+    };
 
     return (
         <>
@@ -29,7 +43,7 @@ const NewPost = () => {
                     <option value="Sajjad">Sajjad</option>
                     <option value="Sajjad2">Sajjad-2</option>
                 </select>
-                <button>Add Post</button>
+                <button onClick={postDataHandler}>Add Post</button>
             </div>
         </>
     );
