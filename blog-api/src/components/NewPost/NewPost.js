@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../axios";
 import "./NewPost.css";
 const NewPost = () => {
     const [title, setTitle] = useState("");
@@ -12,11 +13,9 @@ const NewPost = () => {
             body: content,
             author: author,
         };
-        axios
-            .post("/posts", data)
-            .then((response) => {
-                console.log(response);
-            });
+        axios.post("/posts", data).then((response) => {
+            console.log(response);
+        });
     };
 
     return (

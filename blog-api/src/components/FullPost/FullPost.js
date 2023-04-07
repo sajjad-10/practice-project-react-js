@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./FullPost.css";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../axios";
 const FullPost = (props) => {
     const [loadedPost, setLoadedPost] = useState(null);
     useEffect(() => {
