@@ -9,9 +9,10 @@ import "./Blog.css";
 const Blog = () => {
     const [posts, setPosts] = useState([]);
     const [selectedPostID, setSelectedPostID] = useState(null);
+    const [error, setError] = useState(false);
     useEffect(() => {
         axios
-            .get("https://jsonplaceholder.typicode.com/posts")
+            .get("https://jsonplaceholder.typicode.com/postsسسیس")
             .then((response) => {
                 const posts = response.data.slice(0, 4);
                 const updatedPosts = posts.map((item) => {
@@ -21,22 +22,29 @@ const Blog = () => {
                     };
                 });
                 setPosts(updatedPosts);
+            })
+            .catch((error) => {
+                console.log(error);
+                setError(true);
             });
     }, []);
     const handleDisplayPost = (id) => {
         console.log(id);
         setSelectedPostID(id);
     };
-    const postsComponent = posts.map((item) => {
-        return (
-            <Post
-                key={item.id}
-                author={item.author}
-                title={item.title}
-                click={() => handleDisplayPost(item.id)}
-            />
-        );
-    });
+    let postsComponent = <p style={{ textAlign: "center" }}>Fetching data fail</p>;
+    if (!error) {
+        postsComponent = posts.map((item) => {
+            return (
+                <Post
+                    key={item.id}
+                    author={item.author}
+                    title={item.title}
+                    click={() => handleDisplayPost(item.id)}
+                />
+            );
+        });
+    }
     return (
         <div>
             <section className="posts">{postsComponent}</section>
