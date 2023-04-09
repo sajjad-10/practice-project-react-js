@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "../../axios-orders";
+
 import Wrapper from "../../hoc/Wrapper";
 import Controls from "../../components/Controls/Controls";
 import Modal from "../../components/Ui/Modal/Modal";
@@ -63,7 +65,22 @@ const Shopping = () => {
     };
 
     const purchaseContinueHandler = () => {
-        console.log("purchaseContinueHandler");
+        const order = {
+            products: products,
+            price: totalPrice,
+            customer: {
+                name: "Sajjad",
+                email: "test@gmail.com",
+            },
+        };
+        axios
+            .post("/orders.json", order)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
