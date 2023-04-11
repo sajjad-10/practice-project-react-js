@@ -105,3 +105,13 @@ a {
     color-scheme: dark;
   }
 }
+
+.container{
+  margin: 20px auto;
+  display: flex;
+}
+.mr-20{
+  margin-right: 20px;
+}
+ul{    list-style: none;
+}
