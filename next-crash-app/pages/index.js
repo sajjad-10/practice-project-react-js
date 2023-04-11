@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
+import fs from "fs/promises";
+import path from "path";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,11 +37,12 @@ export default function Home(props) {
                 <hr />
                 <hr />
                 <div className="container">
-                <span className="mr-20">Products :</span>
+                    <span className="mr-20">Products :</span>
 
-                    
                     <ul>
-                        {products.map((item) => (<li key={item.id}>{item.title}</li>))}
+                        {products.map((item) => (
+                            <li key={item.id}>{item.title}</li>
+                        ))}
                     </ul>
                 </div>
             </main>
@@ -47,7 +50,10 @@ export default function Home(props) {
     );
 }
 export async function getStaticProps() {
+    const filePath = path.join(process.cwd(), "data", "products.json");
+    const jsonData = await fs.readFile(filePath);
+    const data = JSON.parse(jsonData);
     return {
-        props: { products: [{ id: "p1", title: "Product 1" }] },
+        props: { products: data.products },
     };
 }
