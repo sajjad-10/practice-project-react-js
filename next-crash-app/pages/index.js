@@ -6,7 +6,8 @@ import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home(props) {
+    const { products } = props;
     return (
         <>
             <Head>
@@ -21,15 +22,32 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={styles.main}>
-                <div>
+            <main>
+                <div className="container">
+                    <span className="mr-20">nav :</span>
                     <ul>
                         <li>
                             <Link href="/blog/posts">Blog</Link>
                         </li>
                     </ul>
                 </div>
+                <hr />
+                <hr />
+                <hr />
+                <div className="container">
+                <span className="mr-20">Products :</span>
+
+                    
+                    <ul>
+                        {products.map((item) => (<li key={item.id}>{item.title}</li>))}
+                    </ul>
+                </div>
             </main>
         </>
     );
+}
+export async function getStaticProps() {
+    return {
+        props: { products: [{ id: "p1", title: "Product 1" }] },
+    };
 }
