@@ -3,6 +3,10 @@ import path from "path";
 
 const ProductDetailPage = (props) => {
     const { loadedProduct } = props;
+
+    if (!loadedProduct) {
+        return <p>Loading ...</p>;
+    }
     return (
         <div>
             <h2>{loadedProduct.title}</h2>
@@ -20,7 +24,7 @@ export async function getStaticProps(context) {
     const data = JSON.parse(jsonData);
 
     const product = data.products.find((item) => {
-      return  item.id === productsId;
+        return item.id === productsId;
     });
     return {
         props: { loadedProduct: product },
@@ -31,9 +35,9 @@ export async function getStaticPaths() {
         paths: [
             { params: { pid: "p1" } },
             { params: { pid: "p2" } },
-            { params: { pid: "p3" } },
+            // { params: { pid: "p3" } },
         ],
-        fallback: false,
+        fallback: true,
     };
 }
 
