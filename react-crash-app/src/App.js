@@ -7,7 +7,7 @@ const App = () => {
             <h2>Hello React</h2>
             <Product title="Book 1" props="20.99" />
             <Product title="Book 2" props="30.99" />
-            <Product title="Book 3" props="40.99" />
+            <Product title="Book 3" props="40.99">Discount: 20%</Product>
         </div>
     );
 };
