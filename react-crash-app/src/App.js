@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Product from "./components/Product/Product";
+import './App.css'
 
 const App = () => {
     const data = [
@@ -19,8 +20,8 @@ const App = () => {
     };
 
     return (
-        <div id="main" className="container">
-            <h2>Hello React</h2>
+        <div id="main" className="center">
+            <h2>Book Store</h2>
             {products.map((item) => (
                 <Product title={item.title} props={item.price}>
                     {item.discount}%
