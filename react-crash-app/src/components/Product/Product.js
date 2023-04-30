@@ -1,10 +1,9 @@
-const Product = () => {
-    const price = 89;
+const Product = (props) => {
     return (
         <>
             <div>
-                <p>Product Name: Book</p>
-                <p>Product Price: {price}</p>
+                <p>Product Name: {props.title}</p>
+                <p>Product Price: {props.price}</p>
             </div>
         </>
     );
