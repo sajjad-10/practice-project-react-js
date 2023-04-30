@@ -1,11 +1,11 @@
 import React from "react";
 
 const App = () => {
-    return React.createElement(
-    "div",
-    { id: "main", className: "container" },
-    "Hello React"
-);
-}
- 
+    return (
+        <div id="main" className="container">
+            <h2>Hello React</h2>
+        </div>
+    );
+};
+
 export default App;
