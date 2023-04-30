@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Product from "./components/Product/Product";
 
 const App = () => {
+    const data = [
+        { title: "Book 1", price: 20.99 },
+        { title: "Book 2", price: 30.99 },
+        { title: "Book 3", price: 40.99, discount: 20 },
+    ];
+    const [products, setProducts] = useState(data);
+
     return (
         <div id="main" className="container">
             <h2>Hello React</h2>
-            <Product title="Book 1" props="20.99" />
-            <Product title="Book 2" props="30.99" />
-            <Product title="Book 3" props="40.99">Discount: 20%</Product>
+            {products.map((item) => (
+                <Product title={item.title} props={item.price}>
+                    {item.discount}%
+                </Product>
+            ))}
+            <button>Change Price</button>
         </div>
     );
 };
