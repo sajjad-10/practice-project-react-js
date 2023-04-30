@@ -9,6 +9,10 @@ const App = () => {
     ];
     const [products, setProducts] = useState(data);
 
+    const changePriceHandler = () => {
+        console.log("Clicked!");
+    };
+
     return (
         <div id="main" className="container">
             <h2>Hello React</h2>
@@ -17,7 +21,7 @@ const App = () => {
                     {item.discount}%
                 </Product>
             ))}
-            <button>Change Price</button>
+            <button onClick={changePriceHandler}>Change Price</button>
         </div>
     );
 };
