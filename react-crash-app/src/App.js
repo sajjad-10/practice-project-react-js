@@ -23,7 +23,7 @@ const App = () => {
         <div id="main" className="center">
             <h2>Book Store</h2>
             {products.map((item) => (
-                <Product title={item.title} price={item.price}>
+                <Product title={item.title} price={item.price} click={changePriceHandler}>
                     {item.discount}%
                 </Product>
             ))}
