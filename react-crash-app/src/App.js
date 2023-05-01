@@ -10,9 +10,9 @@ const App = () => {
     ];
     const [products, setProducts] = useState(data);
 
-    const changePriceHandler = () => {
+    const changePriceHandler = (newTitle) => {
         const data = [
-            { title: "Book 1", price: 30.99 },
+            { title: newTitle, price: 30.99 },
             { title: "Book 2", price: 40.99 },
             { title: "Book 3", price: 50.99, discount: 20 },
         ];
@@ -23,7 +23,11 @@ const App = () => {
         <div id="main" className="center">
             <h2>Book Store</h2>
             {products.map((item) => (
-                <Product title={item.title} price={item.price} click={changePriceHandler}>
+                <Product
+                    title={item.title}
+                    price={item.price}
+                    click={() => changePriceHandler("New Title")}
+                >
                     {item.discount}%
                 </Product>
             ))}
