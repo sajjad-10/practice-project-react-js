@@ -18,6 +18,14 @@ const App = () => {
         ];
         setProducts(data);
     };
+    const changeTitleHandler = (event) => {
+        const data = [
+            { title: event.target.value, price: 30.99 },
+            { title: "Book 2", price: 40.99 },
+            { title: "Book 3", price: 50.99, discount: 20 },
+        ];
+        setProducts(data);
+    };
 
     return (
         <div id="main" className="center">
@@ -27,6 +35,7 @@ const App = () => {
                     title={item.title}
                     price={item.price}
                     click={() => changePriceHandler("New Title")}
+                    change={changeTitleHandler}
                 >
                     {item.discount}%
                 </Product>
