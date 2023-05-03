@@ -26,6 +26,16 @@ const App = () => {
         ];
         setProducts(data);
     };
+    const btn = {
+        backgroundColor: '#7b1fa2',
+        color: '#fff',
+        font: 'inherit',
+        border: 'none',
+        outline: 'none',
+        borderRadius: '3px',
+        padding: '0.6rem',
+        margin: '0.6rem auto',
+    }
 
     return (
         <div id="main" className="center">
@@ -40,7 +50,7 @@ const App = () => {
                     {item.discount}%
                 </Product>
             ))}
-            <button onClick={changePriceHandler}>Change Price</button>
+            <button style={btn} onClick={changePriceHandler}>Change Price</button>
         </div>
     );
 };
