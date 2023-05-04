@@ -22,6 +22,22 @@ const App = () => {
         ];
         setProducts(data);
     };
+    let productJSX = null;
+    if (showProducts) {
+        productJSX = (
+            <div>
+                {products.map((item) => (
+                    <Product
+                        title={item.title}
+                        price={item.price}
+                        change={changeTitleHandler}
+                    >
+                        {item.discount}%
+                    </Product>
+                ))}
+            </div>
+        );
+    }
     const btn = {
         backgroundColor: "#7b1fa2",
         color: "#fff",
@@ -39,19 +55,7 @@ const App = () => {
             <button style={btn} onClick={toggleProductHandler}>
                 Show/Hide Products
             </button>
-            {showProducts ? (
-                <div>
-                    {products.map((item) => (
-                        <Product
-                            title={item.title}
-                            price={item.price}
-                            change={changeTitleHandler}
-                        >
-                            {item.discount}%
-                        </Product>
-                    ))}
-                </div>
-            ) : null}
+            {productJSX}
         </div>
     );
 };
