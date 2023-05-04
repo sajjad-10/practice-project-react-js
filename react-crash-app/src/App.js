@@ -26,6 +26,7 @@ const App = () => {
     if (showProducts) {
         productJSX = (
             <div>
+                
                 {products.map((item) => (
                     <Product
                         title={item.title}
