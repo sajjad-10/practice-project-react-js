@@ -22,13 +22,19 @@ const App = () => {
         ];
         setProducts(data);
     };
+    const deleteProductHandler = (productTarget) => {
+        setProducts((oldProducts) => {
+            return oldProducts.filter((item) => item !== productTarget);
+        });
+    };
     let productJSX = null;
     if (showProducts) {
         productJSX = (
             <div>
-                
-                {products.map((item) => (
+                {products.map((item, index) => (
                     <Product
+                        click={() => deleteProductHandler(item)}
+                        key={index}
                         title={item.title}
                         price={item.price}
                         change={changeTitleHandler}
