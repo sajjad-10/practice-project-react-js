@@ -4,9 +4,9 @@ import "./App.css";
 
 const App = () => {
     const data = [
-        { title: "Book 1", price: 20.99 },
-        { title: "Book 2", price: 30.99 },
-        { title: "Book 3", price: 40.99, discount: 20 },
+        { id: 1, title: "Book 1", price: 20.99 },
+        { id: 2, title: "Book 2", price: 30.99 },
+        { id: 3, title: "Book 3", price: 40.99, discount: 20 },
     ];
     const [products, setProducts] = useState(data);
     const [showProducts, setShowProducts] = useState(false);
@@ -16,15 +16,15 @@ const App = () => {
     };
     const changeTitleHandler = (event) => {
         const data = [
-            { title: event.target.value, price: 30.99 },
-            { title: "Book 2", price: 40.99 },
-            { title: "Book 3", price: 50.99, discount: 20 },
+            { id: 1, title: event.target.value, price: 30.99, price: 55.55 },
+            { id: 2, title: "Book 2", price: 55.55 },
+            { id: 3, title: "Book 3", price: 55.55, discount: 20 },
         ];
         setProducts(data);
     };
     const deleteProductHandler = (productTarget) => {
-        const oldProducts = [...products]
-        oldProducts.splice(productTarget, 1)
+        const oldProducts = [...products];
+        oldProducts.splice(productTarget, 1);
         setProducts(oldProducts);
     };
     let productJSX = null;
@@ -34,7 +34,7 @@ const App = () => {
                 {products.map((item, index) => (
                     <Product
                         click={() => deleteProductHandler(item)}
-                        key={index}
+                        key={item.id}
                         title={item.title}
                         price={item.price}
                         change={changeTitleHandler}
