@@ -14,13 +14,17 @@ const App = () => {
     const toggleProductHandler = () => {
         setShowProducts(!showProducts);
     };
-    const changeTitleHandler = (event) => {
-        const data = [
-            { id: 1, title: event.target.value, price: 30.99, price: 55.55 },
-            { id: 2, title: "Book 2", price: 55.55 },
-            { id: 3, title: "Book 3", price: 55.55, discount: 20 },
-        ];
-        setProducts(data);
+    const changeTitleHandler = (event, id) => {
+        const productIndex = products.findIndex((item) => {
+            return item.id === id;
+        });
+
+        const product = { ...products[productIndex] };
+        product.title = event.target.value;
+
+        const productsCopy = [...products];
+        productsCopy[productIndex] = product;
+        setProducts(productsCopy);
     };
     const deleteProductHandler = (productTarget) => {
         const oldProducts = [...products];
@@ -37,7 +41,7 @@ const App = () => {
                         key={item.id}
                         title={item.title}
                         price={item.price}
-                        change={changeTitleHandler}
+                        change={(event) => changeTitleHandler(event, item.id)}
                     >
                         {item.discount}%
                     </Product>
