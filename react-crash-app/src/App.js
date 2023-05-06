@@ -23,9 +23,9 @@ const App = () => {
         setProducts(data);
     };
     const deleteProductHandler = (productTarget) => {
-        setProducts((oldProducts) => {
-            return oldProducts.filter((item) => item !== productTarget);
-        });
+        const oldProducts = [...products]
+        oldProducts.splice(productTarget, 1)
+        setProducts(oldProducts);
     };
     let productJSX = null;
     if (showProducts) {
