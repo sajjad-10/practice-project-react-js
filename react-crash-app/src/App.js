@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Product from "./components/Product/Product";
+import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
+import Main from "./components/Main/Main";
 
 const App = () => {
     const data = [
@@ -35,17 +36,11 @@ const App = () => {
     if (showProducts) {
         productJSX = (
             <div>
-                {products.map((item, index) => (
-                    <Product
-                        click={() => deleteProductHandler(item)}
-                        key={item.id}
-                        title={item.title}
-                        price={item.price}
-                        change={(event) => changeTitleHandler(event, item.id)}
-                    >
-                        {item.discount}%
-                    </Product>
-                ))}
+                <ProductList
+                    products={products}
+                    click={deleteProductHandler}
+                    change={changeTitleHandler}
+                />
             </div>
         );
     }
@@ -62,10 +57,7 @@ const App = () => {
 
     return (
         <div id="main" className="center">
-            <h2>Book Store</h2>
-            <button style={btn} onClick={toggleProductHandler}>
-                Show/Hide Products
-            </button>
+            <Main click={toggleProductHandler} />
             {productJSX}
         </div>
     );
