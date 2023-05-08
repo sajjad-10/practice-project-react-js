@@ -57,7 +57,7 @@ const App = () => {
 
     return (
         <div id="main" className="center">
-            <Main click={toggleProductHandler} />
+            <Main products={products} click={toggleProductHandler} />
             {productJSX}
         </div>
     );
