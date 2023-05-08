@@ -5,6 +5,9 @@ const Main = (props) => {
         setTimeout(()=>{
             alert('HTTP Request!')
         },2000)
+        return ()=>{
+            console.log("Main.js cleanUp");
+        }
     },[]); // props.products
     const btn = {
         backgroundColor: "#7b1fa2",

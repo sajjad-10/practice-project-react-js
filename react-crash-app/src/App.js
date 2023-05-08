@@ -11,6 +11,7 @@ const App = () => {
     ];
     const [products, setProducts] = useState(data);
     const [showProducts, setShowProducts] = useState(false);
+    const [showMain, setShowMain] = useState(true);
 
     const toggleProductHandler = () => {
         setShowProducts(!showProducts);
@@ -47,7 +48,16 @@ const App = () => {
 
     return (
         <div id="main" className="center">
-            <Main products={products} click={toggleProductHandler} />
+            <button
+                onClick={() => {
+                    setShowMain(false);
+                }}
+            >
+                Remove Main
+            </button>
+            {showMain ? (
+                <Main products={products} click={toggleProductHandler} />
+            ) : null}
             {productJSX}
         </div>
     );
