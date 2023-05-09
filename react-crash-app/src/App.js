@@ -3,6 +3,7 @@ import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import Main from "./components/Main/Main";
 import Wrapper from "./components/hoc/Wrapper";
+import Container from "./components/hoc/Container";
 
 const App = () => {
     const data = [
@@ -48,7 +49,7 @@ const App = () => {
     }
 
     return (
-        <Wrapper center="center">
+        <Container>
             <button
                 onClick={() => {
                     setShowMain(false);
@@ -57,11 +58,13 @@ const App = () => {
                 Remove Main
             </button>
             {showMain ? (
-                <Main products={products} click={toggleProductHandler} />
+                <>
+                    <Main products={products} click={toggleProductHandler} />
+                    {productJSX}
+                </>
             ) : null}
-            {productJSX}
-        </Wrapper>
+        </Container>
     );
 };
 
-export default App;
+export default Wrapper(App, "center");
