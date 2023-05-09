@@ -1,10 +1,11 @@
 import Container from "../hoc/Container";
+import Wrapper from "../hoc/Wrapper";
 import "./Product.css";
 const Product = (props) => {
     return (
         <>
             <Container>
-                <div className="product">
+                <div>
                     <p onClick={props.click}>Product Name: {props.title}</p>
                     <p>Product Price: {props.price}</p>
                     <p>{props.children}</p>
@@ -19,4 +20,4 @@ const Product = (props) => {
     );
 };
 
-export default Product;
+export default Wrapper(Product, "product");
