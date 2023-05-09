@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ProductList from "./components/ProductList/ProductList";
 import "./App.css";
 import Main from "./components/Main/Main";
+import Wrapper from "./components/hoc/Wrapper";
 
 const App = () => {
     const data = [
@@ -47,7 +48,7 @@ const App = () => {
     }
 
     return (
-        <div id="main" className="center">
+        <Wrapper center="center">
             <button
                 onClick={() => {
                     setShowMain(false);
@@ -59,7 +60,7 @@ const App = () => {
                 <Main products={products} click={toggleProductHandler} />
             ) : null}
             {productJSX}
-        </div>
+        </Wrapper>
     );
 };
 
