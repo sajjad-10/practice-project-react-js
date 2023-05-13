@@ -4,6 +4,7 @@ import "./App.css";
 import Main from "./components/Main/Main";
 import Wrapper from "./components/hoc/Wrapper";
 import Container from "./components/hoc/Container";
+import AuthContext from "./context/auth-context";
 
 const App = () => {
     const data = [
@@ -15,7 +16,6 @@ const App = () => {
     const [showProducts, setShowProducts] = useState(false);
     const [showMain, setShowMain] = useState(true);
     const [auth, setAuth] = useState(false);
-
     const toggleProductHandler = () => {
         setShowProducts(!showProducts);
     };
@@ -62,16 +62,18 @@ const App = () => {
             >
                 Remove Main
             </button>
-            {showMain ? (
-                <>
-                    <Main
-                        products={products}
-                        click={toggleProductHandler}
-                        login={loginHandler}
-                    />
-                    {productJSX}
-                </>
-            ) : null}
+            <AuthContext.Provider value={{ auth: auth, login: loginHandler }}>
+                {showMain ? (
+                    <>
+                        <Main
+                            products={products}
+                            click={toggleProductHandler}
+                            login={loginHandler}
+                        />
+                        {productJSX}
+                    </>
+                ) : null}
+            </AuthContext.Provider>
         </Container>
     );
 };

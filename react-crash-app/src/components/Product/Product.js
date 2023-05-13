@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import AuthContext from "../../context/auth-context";
 
 import Container from "../hoc/Container";
 import Wrapper from "../hoc/Wrapper";
@@ -12,7 +13,15 @@ const Product = (props) => {
         <>
             <Container>
                 <div>
-                    {props.isAuth ? <p>Logged in!</p> : <p>Please Login</p>}
+                    <AuthContext.Consumer>
+                        {(context) =>
+                            context.auth ? (
+                                <p>Logged in!</p>
+                            ) : (
+                                <p>Please Login</p>
+                            )
+                        }
+                    </AuthContext.Consumer>
                     <p onClick={props.click}>Product Name: {props.title}</p>
                     <p>Product Price: {props.price}</p>
                     <p>{props.children}</p>
