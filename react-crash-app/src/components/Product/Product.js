@@ -12,6 +12,7 @@ const Product = (props) => {
         <>
             <Container>
                 <div>
+                    {props.isAuth ? <p>Logged in!</p> : <p>Please Login</p>}
                     <p onClick={props.click}>Product Name: {props.title}</p>
                     <p>Product Price: {props.price}</p>
                     <p>{props.children}</p>

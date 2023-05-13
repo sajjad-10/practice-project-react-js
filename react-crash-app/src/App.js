@@ -14,6 +14,7 @@ const App = () => {
     const [products, setProducts] = useState(data);
     const [showProducts, setShowProducts] = useState(false);
     const [showMain, setShowMain] = useState(true);
+    const [auth, setAuth] = useState(false);
 
     const toggleProductHandler = () => {
         setShowProducts(!showProducts);
@@ -35,6 +36,9 @@ const App = () => {
         oldProducts.splice(productTarget, 1);
         setProducts(oldProducts);
     };
+    const loginHandler = () => {
+        setAuth(true);
+    };
     let productJSX = null;
     if (showProducts) {
         productJSX = (
@@ -43,6 +47,7 @@ const App = () => {
                     products={products}
                     click={deleteProductHandler}
                     change={changeTitleHandler}
+                    isAuth={auth}
                 />
             </div>
         );
@@ -59,7 +64,11 @@ const App = () => {
             </button>
             {showMain ? (
                 <>
-                    <Main products={products} click={toggleProductHandler} />
+                    <Main
+                        products={products}
+                        click={toggleProductHandler}
+                        login={loginHandler}
+                    />
                     {productJSX}
                 </>
             ) : null}

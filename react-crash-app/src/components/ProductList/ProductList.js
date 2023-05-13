@@ -8,6 +8,7 @@ const ProductList = (props) => {
                 title={item.title}
                 price={item.price}
                 change={(event) => props.change(event, item.id)}
+                isAuth={props.isAuth}
             >
                 {item.discount}%
             </Product>
