@@ -1,14 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 const Main = (props) => {
+    const btnRef = useRef(null);
     useEffect(() => {
-        console.log("Main.js useEffect");
-        setTimeout(()=>{
-            alert('HTTP Request!')
-        },2000)
-        return ()=>{
+        btnRef.current.click()
+        return () => {
             console.log("Main.js cleanUp");
-        }
-    },[]); // props.products
+        };
+    }, []); // props.products
     const btn = {
         backgroundColor: "#7b1fa2",
         color: "#fff",
@@ -24,7 +22,7 @@ const Main = (props) => {
         <>
             <div>
                 <h2>Book Store</h2>
-                <button style={btn} onClick={props.click}>
+                <button ref={btnRef} style={btn} onClick={props.click}>
                     Show/Hide Products
                 </button>
             </div>
