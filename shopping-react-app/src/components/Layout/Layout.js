@@ -1,10 +1,11 @@
 import Wrapper from "../../hoc/Wrapper";
+import "./Layout.css";
 
 const Layout = (props) => {
     return (
         <Wrapper>
             <div>Navigation</div>
-            <main>{props.children}</main>
+            <main className="content">{props.children}</main>
         </Wrapper>
     );
 };

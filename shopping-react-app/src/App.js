@@ -1,10 +1,11 @@
 import Layout from "./components/Layout/Layout";
+import Shopping from "./containers/Shopping/Shopping";
 
 const App = () => {
     return (
         <div>
             <Layout>
-                <p>Shopping App</p>
+                <Shopping></Shopping>
             </Layout>
         </div>
     );
