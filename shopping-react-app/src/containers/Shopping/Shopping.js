@@ -51,6 +51,7 @@ const Shopping = (props) => {
             <Controls
                 productAdd={addProductHandler}
                 productRemove={removeProductHandler}
+                price={totalPrice}
             />
         </Wrapper>
     );

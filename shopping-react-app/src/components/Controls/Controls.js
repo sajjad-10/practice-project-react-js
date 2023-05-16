@@ -9,6 +9,9 @@ const products = [
 const Controls = (props) => {
     return (
         <div className="controls">
+            <div>
+                <p>{props.price}</p>
+            </div>
             {products.map((item) => {
                 return (
                     <Builder
