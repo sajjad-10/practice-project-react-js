@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Wrapper from "../../hoc/Wrapper";
+import Controls from "../../components/Controls/Controls";
 const Shopping = (props) => {
     const [products, useProducts] = useState({
         product1: 0,
@@ -12,7 +13,7 @@ const Shopping = (props) => {
 
     return (
         <Wrapper>
-            <div>Controls</div>
+            <Controls/>
         </Wrapper>
     );
 };
