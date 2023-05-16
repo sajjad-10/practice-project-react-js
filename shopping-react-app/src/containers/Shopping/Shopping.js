@@ -53,9 +53,14 @@ const Shopping = (props) => {
         setPurchased(true);
     };
 
+    const modalCloseHandler = () => {
+        console.log("clocke");
+        setPurchased(false);
+    };
+
     return (
         <Wrapper>
-            <Modal show={purchased}>
+            <Modal show={purchased} modalClose={modalCloseHandler}>
                 <Order products={products} />
             </Modal>
             <Controls
