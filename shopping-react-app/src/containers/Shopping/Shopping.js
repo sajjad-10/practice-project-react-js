@@ -19,6 +19,7 @@ const Shopping = (props) => {
         product4: 0,
     });
     const [totalPrice, setTotalPrice] = useState(0);
+    const [purchased, setPurchased] = useState(false);
 
     const addProductHandler = (type) => {
         const prevCount = products[type];
@@ -48,15 +49,20 @@ const Shopping = (props) => {
         console.log("Remove");
     };
 
+    const purchasedHandler = () => {
+        setPurchased(true);
+    };
+
     return (
         <Wrapper>
-            <Modal>
+            <Modal show={purchased}>
                 <Order products={products} />
             </Modal>
             <Controls
                 productAdd={addProductHandler}
                 productRemove={removeProductHandler}
                 price={totalPrice}
+                order={purchasedHandler}
             />
         </Wrapper>
     );

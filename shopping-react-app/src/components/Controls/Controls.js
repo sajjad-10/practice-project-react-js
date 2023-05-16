@@ -9,8 +9,8 @@ const products = [
 const Controls = (props) => {
     return (
         <div className="controls">
-            <div>
-                <p>{props.price}</p>
+            <div className="price">
+                <p>Total Price: {props.price}</p>
             </div>
             {products.map((item) => {
                 return (
@@ -22,6 +22,7 @@ const Controls = (props) => {
                     />
                 );
             })}
+            <button onClick={props.order} className="order-btn">Order</button>
         </div>
     );
 };
