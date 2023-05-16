@@ -23,18 +23,35 @@ const Shopping = (props) => {
         const updatedCount = prevCount + 1;
         const updatedProducts = { ...products };
         updatedProducts[type] = updatedCount;
-        setProducts(updatedProducts)
+        setProducts(updatedProducts);
 
         const priceAdd = prices[type];
         const prevPrice = totalPrice;
         const newPrice = priceAdd + prevPrice;
-        setTotalPrice(newPrice)
+        setTotalPrice(newPrice);
         console.log("ADD");
+    };
+
+    const removeProductHandler = (type) => {
+        const prevCount = products[type];
+        const updatedCount = prevCount - 1;
+        const updatedProducts = { ...products };
+        updatedProducts[type] = updatedCount;
+        setProducts(updatedProducts);
+
+        const priceSub = prices[type];
+        const prevPrice = totalPrice;
+        const newPrice = priceSub - prevPrice;
+        setTotalPrice(newPrice);
+        console.log("Remove");
     };
 
     return (
         <Wrapper>
-            <Controls productAdd={addProductHandler} />
+            <Controls
+                productAdd={addProductHandler}
+                productRemove={removeProductHandler}
+            />
         </Wrapper>
     );
 };
