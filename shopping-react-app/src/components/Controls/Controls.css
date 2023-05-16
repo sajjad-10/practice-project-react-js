@@ -10,3 +10,18 @@
     padding         : 32px 0;
     box-shadow      : 0 0 25px 5px rgba(0, 0, 0, 0.07);
 }
+.price p{
+    color: #6a1b9a;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.order-btn{
+    background-color: #e1bee7;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    color: #8e24aa;
+    font: inherit;
+    padding: 16px 32px;
+    margin-top: 23px;
+}
