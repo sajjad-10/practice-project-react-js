@@ -10,7 +10,13 @@ const Controls = (props) => {
     return (
         <div className="controls">
             {products.map((item) => {
-                return <Builder key={item.title} title={item.title} />;
+                return (
+                    <Builder
+                        key={item.title}
+                        title={item.title}
+                        add={() => props.productAdd(item.type)}
+                    />
+                );
             })}
         </div>
     );
