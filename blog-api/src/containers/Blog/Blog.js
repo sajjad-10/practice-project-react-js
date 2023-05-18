@@ -19,7 +19,7 @@ const Blog = () => {
                 });
                 setPosts(updatedPosts);
             });
-    });
+    },[]);
     const selectPostHandler = (id) => {
         setSelectedPostId(id);
     };
