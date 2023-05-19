@@ -16,6 +16,13 @@ const FullPost = (props) => {
             }
         }
     });
+    const deletePostHandler = () => {
+        axios
+            .delete(`https://jsonplaceholder.typicode.com/posts/${props.id}`)
+            .then((response) => {
+                console.log(response);
+            });
+    };
     let post = <p style={{ textAlign: "center" }}>Please select a Post</p>;
     if (props.id) {
         post = <p style={{ textAlign: "center" }}>Loading ...</p>;
@@ -26,7 +33,9 @@ const FullPost = (props) => {
                 <h2>{loadedPost.title}</h2>
                 <p>{loadedPost.body}</p>
                 <div>
-                    <button className="delete">Delete</button>
+                    <button className="delete" onClick={deletePostHandler}>
+                        Delete
+                    </button>
                 </div>
             </div>
         );
