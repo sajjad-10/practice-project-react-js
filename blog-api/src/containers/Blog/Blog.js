@@ -9,6 +9,7 @@ import "./Blog.css";
 const Blog = () => {
     const [posts, setPosts] = useState([]);
     const [selectedPostId, setSelectedPostId] = useState(null);
+    const [error, setError] = useState(null);
     useEffect(() => {
         axios
             .get("https://jsonplaceholder.typicode.com/posts")
@@ -18,21 +19,31 @@ const Blog = () => {
                     return { ...item, author: "Sajjad" };
                 });
                 setPosts(updatedPosts);
+            })
+            .catch((err) => {
+                setError(true);
             });
-    },[]);
+    }, []);
     const selectPostHandler = (id) => {
         setSelectedPostId(id);
     };
-    const postsComponent = posts.map((post) => {
-        return (
-            <Post
-                key={post.id}
-                title={post.title}
-                author={post.author}
-                click={() => selectPostHandler(post.id)}
-            />
-        );
-    });
+
+    let postsComponent = (
+        <p style={{ textAlign: "center" }}>Fetching data failed!!!</p>
+    );
+
+    if (!error) {
+        postsComponent = posts.map((post) => {
+            return (
+                <Post
+                    key={post.id}
+                    title={post.title}
+                    author={post.author}
+                    click={() => selectPostHandler(post.id)}
+                />
+            );
+        });
+    }
     return (
         <div>
             <section className="posts">{postsComponent}</section>
