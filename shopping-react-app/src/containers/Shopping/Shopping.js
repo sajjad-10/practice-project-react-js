@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "../../axios-orders";
 
 import Wrapper from "../../hoc/Wrapper";
@@ -14,15 +14,21 @@ const prices = {
     product4: 59,
 };
 const Shopping = (props) => {
-    const [products, setProducts] = useState({
-        product1: 0,
-        product2: 0,
-        product3: 0,
-        product4: 0,
-    });
+    const [products, setProducts] = useState(null);
     const [totalPrice, setTotalPrice] = useState(0);
     const [purchased, setPurchased] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        axios
+            .get("/products.json")
+            .then((response) => {
+                setProducts(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
 
     const addProductHandler = (type) => {
         const prevCount = products[type];
@@ -80,17 +86,31 @@ const Shopping = (props) => {
             });
     };
 
-    let order = (
-        <Order
-            products={products}
-            continue={purchaseContinuedHandler}
-            cancel={modalCloseHandler}
-            total={totalPrice}
-        />
-    );
+    let order = null;
 
     if (loading) {
         order = <Loader />;
+    }
+
+    let controls = <Loader />;
+
+    if (products) {
+        controls = (
+            <Controls
+                productAdd={addProductHandler}
+                productRemove={removeProductHandler}
+                price={totalPrice}
+                order={purchasedHandler}
+            />
+        );
+        order = (
+            <Order
+                products={products}
+                continue={purchaseContinuedHandler}
+                cancel={modalCloseHandler}
+                total={totalPrice}
+            />
+        );
     }
 
     return (
@@ -98,12 +118,7 @@ const Shopping = (props) => {
             <Modal show={purchased} modalClose={modalCloseHandler}>
                 {order}
             </Modal>
-            <Controls
-                productAdd={addProductHandler}
-                productRemove={removeProductHandler}
-                price={totalPrice}
-                order={purchasedHandler}
-            />
+            {controls}
         </Wrapper>
     );
 };
