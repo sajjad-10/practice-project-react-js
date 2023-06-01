@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "../../axios-orders";
 
 import Wrapper from "../../hoc/Wrapper";
 import Controls from "../../components/Controls/Controls";
@@ -59,7 +60,19 @@ const Shopping = (props) => {
     };
 
     const purchaseContinuedHandler = () => {
-        console.log("purchaseContinuedHandler");
+        const order = {
+            products: products,
+            price: totalPrice,
+            customer: { name: "Sajjad", email: "test@test.com" },
+        };
+        axios
+            .post("/orders.json", { order })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (
