@@ -1,7 +1,8 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 
 import Posts from "./Posts/Posts";
 import "./Blog.css";
+import NewPost from "./NewPost/NewPost";
 
 const Blog = () => {
     return (
@@ -10,20 +11,25 @@ const Blog = () => {
                 <nav>
                     <ul>
                         <li>
-                            <a href="/">Home</a>
+                            <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <a href="/new-post">New Post</a>
+                            <Link
+                                to={{
+                                    pathname: "/new-post",
+                                    search: "?sort=post",
+                                }}
+                            >
+                                New Post
+                            </Link>
                         </li>
                     </ul>
                 </nav>
             </header>
 
             <Routes>
-                <Route path="/" exact element={<Posts />}  />
-                {/* <Route exact path="/">
-                    <Posts />
-                </Route> */}
+                <Route path="/" exact element={<Posts />} />
+                <Route path="/new-post" exact element={<NewPost />} />
             </Routes>
         </div>
     );
