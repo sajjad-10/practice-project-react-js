@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useLocation   } from 'react-router-dom';
+
 // import axios from "axios";
 import axios from "../../../axios";
 
@@ -7,6 +9,8 @@ const NewPost = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [author, setAuthor] = useState("Sajjad");
+    const location  = useLocation ();
+    console.log(location ); // Log location prop to the console
 
     const postDataHandler = () => {
         const data = {

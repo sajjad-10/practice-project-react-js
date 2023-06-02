@@ -28,8 +28,8 @@ const Blog = () => {
             </header>
 
             <Routes>
-                <Route path="/" exact element={<Posts />} />
-                <Route path="/new-post" exact element={<NewPost />} />
+                <Route  path="/" exact element={<Posts  />} />
+                <Route path="/new-post" element={<NewPost />} />
             </Routes>
         </div>
     );
