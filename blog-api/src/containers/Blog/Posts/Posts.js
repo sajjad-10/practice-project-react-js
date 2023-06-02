@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation   } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 
 import axios from "../../../axios";
 import Post from "../../../components/Post/Post";
@@ -8,12 +8,11 @@ const Posts = (props) => {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState(null);
     const [selectedPostId, setSelectedPostId] = useState(null);
-    const location  = useLocation ();
-    console.log(location ); // Log location prop to the console
+    const location = useLocation();
+    console.log(location); // Log location prop to the console
 
     useEffect(() => {
-
-              axios
+        axios
             .get("/posts")
             .then((response) => {
                 const postsData = response.data.slice(0, 4);
@@ -37,12 +36,13 @@ const Posts = (props) => {
     if (!error) {
         postsComponent = posts.map((post) => {
             return (
-                <Post
-                    key={post.id}
-                    title={post.title}
-                    author={post.author}
-                    click={() => selectPostHandler(post.id)}
-                />
+                <Link to={`/${post.id}`} key={post.id}>
+                    <Post                        
+                        title={post.title}
+                        author={post.author}
+                        click={() => selectPostHandler(post.id)}
+                    />
+                </Link>
             );
         });
     }

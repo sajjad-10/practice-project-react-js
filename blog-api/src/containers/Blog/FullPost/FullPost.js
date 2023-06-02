@@ -1,31 +1,30 @@
 // import axios from "axios";
 import axios from "../../../axios";
 import { useEffect, useState } from "react";
+import { useLocation , useParams } from "react-router-dom";
+
 import "./FullPost.css";
 const FullPost = (props) => {
     const [loadedPost, setLoadedPost] = useState(null);
+    const location = useLocation();
+    const params = useParams();
+
     useEffect(() => {
-        if (props.id) {
-            if (!loadedPost || (loadedPost && loadedPost.id !== props.id)) {
-                axios
-                    .get(
-                        `/posts/${props.id}`
-                    )
-                    .then((response) => {
-                        setLoadedPost(response.data);
-                    });
+        if (params.id) {
+            if (!loadedPost || (loadedPost && loadedPost.id !== params.id)) {
+                axios.get(`/posts/${params.id}`).then((response) => {
+                    setLoadedPost(response.data);
+                });
             }
         }
     });
     const deletePostHandler = () => {
-        axios
-            .delete(`/posts/${props.id}`)
-            .then((response) => {
-                console.log(response);
-            });
+        axios.delete(`/posts/${params.id}`).then((response) => {
+            console.log(response);
+        });
     };
     let post = <p style={{ textAlign: "center" }}>Please select a Post</p>;
-    if (props.id) {
+    if (params.id) {
         post = <p style={{ textAlign: "center" }}>Loading ...</p>;
     }
     if (loadedPost) {

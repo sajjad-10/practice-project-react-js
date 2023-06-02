@@ -3,6 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Posts from "./Posts/Posts";
 import "./Blog.css";
 import NewPost from "./NewPost/NewPost";
+import FullPost from "./FullPost/FullPost";
 
 const Blog = () => {
     return (
@@ -28,8 +29,9 @@ const Blog = () => {
             </header>
 
             <Routes>
-                <Route  path="/" exact element={<Posts  />} />
+                <Route path="/" exact element={<Posts />} />
                 <Route path="/new-post" element={<NewPost />} />
+                <Route path="/:id" exact element={<FullPost />} />
             </Routes>
         </div>
     );
