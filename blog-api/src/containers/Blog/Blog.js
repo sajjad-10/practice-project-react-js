@@ -1,10 +1,12 @@
+import { Routes, Route } from "react-router-dom";
+
 import Posts from "./Posts/Posts";
 import "./Blog.css";
 
 const Blog = () => {
     return (
         <div className="blog">
-            {/* <header>
+            <header>
                 <nav>
                     <ul>
                         <li>
@@ -13,11 +15,16 @@ const Blog = () => {
                         <li>
                             <a href="/new-post">New Post</a>
                         </li>
-
                     </ul>
                 </nav>
-            </header> */}
-            <Posts/>
+            </header>
+
+            <Routes>
+                <Route path="/" exact element={<Posts />}  />
+                {/* <Route exact path="/">
+                    <Posts />
+                </Route> */}
+            </Routes>
         </div>
     );
 };

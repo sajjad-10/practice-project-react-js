@@ -1,15 +1,15 @@
-// import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Blog from "./containers/Blog/Blog";
 
 import "./App.css";
 
 function App() {
     return (
-        // <Router>
+        <Router>
             <div className="App">
                 <Blog />
             </div>
-        // </Router>
+        </Router>
     );
 }
 
