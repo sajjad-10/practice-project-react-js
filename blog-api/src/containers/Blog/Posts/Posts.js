@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import axios from "../../../axios";
 import Post from "../../../components/Post/Post";
@@ -7,9 +7,8 @@ import Post from "../../../components/Post/Post";
 const Posts = (props) => {
     const [posts, setPosts] = useState([]);
     const [error, setError] = useState(null);
-    const [selectedPostId, setSelectedPostId] = useState(null);
-    const location = useLocation();
-    console.log(location); // Log location prop to the console
+    // const [selectedPostId, setSelectedPostId] = useState(null);
+    let navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -26,9 +25,8 @@ const Posts = (props) => {
             });
     }, []);
     const selectPostHandler = (id) => {
-        setSelectedPostId(id);
+        navigate(`/${id}`);
     };
-    console.log(selectedPostId);
     let postsComponent = (
         <p style={{ textAlign: "center" }}>Fetching data failed!!!</p>
     );
@@ -36,13 +34,12 @@ const Posts = (props) => {
     if (!error) {
         postsComponent = posts.map((post) => {
             return (
-                <Link to={`/${post.id}`} key={post.id}>
-                    <Post                        
-                        title={post.title}
-                        author={post.author}
-                        click={() => selectPostHandler(post.id)}
-                    />
-                </Link>
+                <Post
+                    key={post.id}
+                    title={post.title}
+                    author={post.author}
+                    click={() => selectPostHandler(post.id)}
+                />
             );
         });
     }

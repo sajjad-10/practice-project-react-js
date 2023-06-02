@@ -1,12 +1,11 @@
 // import axios from "axios";
 import axios from "../../../axios";
 import { useEffect, useState } from "react";
-import { useLocation , useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import "./FullPost.css";
 const FullPost = (props) => {
     const [loadedPost, setLoadedPost] = useState(null);
-    const location = useLocation();
     const params = useParams();
 
     useEffect(() => {
