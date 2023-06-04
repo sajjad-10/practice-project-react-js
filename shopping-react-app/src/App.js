@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Shopping from "./containers/Shopping/Shopping";
+import Checkout from "./containers/Checkout/Checkout";
 
 const App = () => {
     return (
@@ -8,10 +9,7 @@ const App = () => {
             <Router>
                 <Layout>
                     <Routes>
-                        <Route
-                            path="/checkout"
-                            element={() => <h2>Checkout Page</h2>}
-                        />
+                        <Route path="/checkout" element={<Checkout />} />
                         <Route path="/" exact element={<Shopping />} />
                     </Routes>
                 </Layout>

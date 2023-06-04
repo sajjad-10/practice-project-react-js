@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../../axios-orders";
 
 import Wrapper from "../../hoc/Wrapper";
@@ -18,6 +19,8 @@ const Shopping = (props) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [purchased, setPurchased] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios
@@ -68,22 +71,24 @@ const Shopping = (props) => {
     };
 
     const purchaseContinuedHandler = () => {
-        setLoading(true);
-        const order = {
-            products: products,
-            price: totalPrice,
-            customer: { name: "Sajjad", email: "test@test.com" },
-        };
-        axios
-            .post("/orders.json", { order })
-            .then((response) => {
-                setLoading(false);
-                setPurchased(false);
-            })
-            .catch((error) => {
-                setLoading(false);
-                setPurchased(false);
-            });
+        navigate("/checkout")
+        
+        // setLoading(true);
+        // const order = {
+        //     products: products,
+        //     price: totalPrice,
+        //     customer: { name: "Sajjad", email: "test@test.com" },
+        // };
+        // axios
+        //     .post("/orders.json", { order })
+        //     .then((response) => {
+        //         setLoading(false);
+        //         setPurchased(false);
+        //     })
+        //     .catch((error) => {
+        //         setLoading(false);
+        //         setPurchased(false);
+        //     });
     };
 
     let order = null;
