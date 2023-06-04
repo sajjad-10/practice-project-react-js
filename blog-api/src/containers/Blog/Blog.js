@@ -33,6 +33,7 @@ const Blog = () => {
                 <Route path="/new-post" element={<NewPost />} />
                 <Route path="/test-redirect" element={<Navigate to="/"/>} />
                 <Route path="/:id" exact element={<FullPost />} />
+                <Route path="*" element={<h2 style={{ textAlign: "center" }}>Not-Found | 404</h2>} />
             </Routes>
         </div>
     );
