@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate , Navigate } from "react-router-dom";
 
 import Posts from "./Posts/Posts";
 import "./Blog.css";
@@ -31,6 +31,7 @@ const Blog = () => {
             <Routes>
                 <Route path="/" exact element={<Posts />} />
                 <Route path="/new-post" element={<NewPost />} />
+                <Route path="/test-redirect" element={<Navigate to="/"/>} />
                 <Route path="/:id" exact element={<FullPost />} />
             </Routes>
         </div>
