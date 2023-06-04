@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useLocation   } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // import axios from "axios";
 import axios from "../../../axios";
@@ -9,8 +9,10 @@ const NewPost = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [author, setAuthor] = useState("Sajjad");
-    const location  = useLocation ();
-    console.log(location ); // Log location prop to the console
+    const [submitted, setSubmitted] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log(location); // Log location prop to the console
 
     const postDataHandler = () => {
         const data = {
@@ -18,10 +20,16 @@ const NewPost = () => {
             body: content,
             author: author,
         };
-        axios.post("/posts", data).then((response)=>{
+        axios.post("/posts", data).then((response) => {
             console.log(response);
+            setSubmitted(true);
         });
     };
+    useEffect(() => {
+        if (submitted) {
+            navigate("/");
+        }
+    }, [submitted,navigate]);
     return (
         <>
             <div className="new-post">
