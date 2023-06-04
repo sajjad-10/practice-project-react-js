@@ -1,13 +1,15 @@
+import Input from "../../components/Ui/Input/Input";
+import Button from "../../components/Ui/Button/Button";
 import "./Account.css";
 const Account = () => {
     return (
         <div className="account">
             <h2>Account</h2>
             <form>
-                <input type="text" placeholder="Name..." />
-                <input type="text" placeholder="Email..." />
-                <input type="password" placeholder="Password..." />
-                <button>Submit</button>
+                <Input type="text" placeholder="Name..." />
+                <Input type="text" placeholder="Email..." />
+                <Input type="password" placeholder="Password..." />            
+                <Button btnType="form">Submit</Button>
             </form>
         </div>
     );
