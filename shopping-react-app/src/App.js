@@ -1,12 +1,21 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Shopping from "./containers/Shopping/Shopping";
 
 const App = () => {
     return (
         <div>
-            <Layout>
-                <Shopping></Shopping>
-            </Layout>
+            <Router>
+                <Layout>
+                    <Routes>
+                        <Route
+                            path="/checkout"
+                            element={() => <h2>Checkout Page</h2>}
+                        />
+                        <Route path="/" exact element={<Shopping />} />
+                    </Routes>
+                </Layout>
+            </Router>
         </div>
     );
 };
