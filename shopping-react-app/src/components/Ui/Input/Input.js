@@ -1,9 +1,28 @@
 import "./Input.css";
 const Input = (props) => {
     let inputElement = null;
-    switch (props.inputType) {
+    switch (props.elementType) {
         case "input":
-            inputElement = <input className="input-element" {...props} />;
+            inputElement = (
+                <input
+                    className="input-element"
+                    type={props.type}
+                    placeholder={props.placeholder}
+                    value={props.value}
+                    onChange={props.onChange}
+                />
+            );
+            break;
+        case "password":
+            inputElement = (
+                <input
+                    className="input-element"
+                    type={props.type}
+                    placeholder={props.placeholder}
+                    value={props.value}
+                    onChange={props.onChange}
+                />
+            );
             break;
         default:
             inputElement = <input className="input-element" {...props} />;
