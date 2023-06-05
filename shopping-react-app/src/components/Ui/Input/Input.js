@@ -1,11 +1,17 @@
 import "./Input.css";
 const Input = (props) => {
     let inputElement = null;
+    const inputClass = ["input-element"];
+
+    if(props.inValid && props.used){
+        inputClass.push('invalid')
+    }
+
     switch (props.elementType) {
         case "input":
             inputElement = (
                 <input
-                    className="input-element"
+                    className={inputClass.join(" ")}
                     type={props.type}
                     placeholder={props.placeholder}
                     value={props.value}
@@ -16,7 +22,7 @@ const Input = (props) => {
         case "password":
             inputElement = (
                 <input
-                    className="input-element"
+                    className={inputClass.join(" ")}
                     type={props.type}
                     placeholder={props.placeholder}
                     value={props.value}
