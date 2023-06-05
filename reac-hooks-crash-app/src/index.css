@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    direction: rtl;
+    font-family: "Vazirmatn", sans-serif;
+}
+
+button {
+    font: inherit;
+    background: #1e88e5;
+    padding: 0.5rem 2rem;
+    color: #ffffff;
+    border: none;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    outline: none;
+}
