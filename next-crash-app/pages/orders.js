@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-const OrderPage = () => {
-    const [orders, setOrders] = useState([]);
+const OrderPage = (props) => {
+    const [orders, setOrders] = useState(props.orders);
     useEffect(() => {
         const fetchOrders = async () => {
             const response = await fetch("http://localhost:5000/orders");
@@ -24,3 +24,12 @@ const OrderPage = () => {
 };
 
 export default OrderPage;
+
+export async function getStaticProps() {
+    const response = await fetch("http://localhost:5000/orders");
+    const responseData = await response.json();
+
+    return {
+        props: { orders: responseData },
+    };
+}
