@@ -6,10 +6,13 @@ import "./ProductForm.css";
 
 const ProductForm = React.memo((props) => {
     const inputState = useState({ title: "", amount: "" });
+    const [title, setTitle] = useState("");
+    const [amount, setAmount] = useState("");
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(inputState);
+        console.log(title);
+        console.log(amount);
     };
 
     return (
@@ -21,13 +24,8 @@ const ProductForm = React.memo((props) => {
                         <input
                             type="text"
                             id="title"
-                            value={inputState[0].title}
-                            onChange={(event) =>
-                                inputState[1]({
-                                    title: event.target.value,
-                                    amount: inputState[0].amount,
-                                })
-                            }
+                            value={title}
+                            onChange={(event) => setTitle(event.target.value)}
                         />
                     </div>
                     <div className="form-control">
@@ -35,14 +33,8 @@ const ProductForm = React.memo((props) => {
                         <input
                             type="number"
                             id="amount"
-                            value={inputState[0].amount}
-                            onChange={(event) =>
-                                inputState[1]({
-                                    title: inputState[0].title,
-                                    amount: event.target.value,
-                                })
-                            }
-
+                            value={amount}
+                            onChange={(event) => setAmount(event.target.value)}
                         />
                     </div>
                     <div className="product-form__actions">
