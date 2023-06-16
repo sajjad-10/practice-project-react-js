@@ -5,14 +5,12 @@ import Card from "../UI/Card";
 import "./ProductForm.css";
 
 const ProductForm = React.memo((props) => {
-    const inputState = useState({ title: "", amount: "" });
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(title);
-        console.log(amount);
+        props.onAddProduct({ title: title, amount: amount });
     };
 
     return (
