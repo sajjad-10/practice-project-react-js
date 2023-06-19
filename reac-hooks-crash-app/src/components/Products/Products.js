@@ -24,6 +24,10 @@ function Products() {
             });
     }, []);
 
+    const searchProductsHandler = (items)=>{
+        setProducts(items)
+    }
+
     const addProductHandler = (newProduct) => {
         fetch(`${process.env.REACT_APP_FIREBASE_DATABASE_URL}/products.json`, {
             method: "POST",
@@ -44,7 +48,7 @@ function Products() {
         <div className="App">
             <ProductForm onAddProduct={addProductHandler} />
             <section>
-                <Search />
+                <Search onLoadProducts={searchProductsHandler} />
                 <ProductList products={products} onRemoveItem={() => {}} />
             </section>
         </div>
