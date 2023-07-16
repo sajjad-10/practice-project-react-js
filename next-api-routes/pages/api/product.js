@@ -1,3 +1,5 @@
-function handler(req, res) {}
+function handler(req, res) {
+    res.json({ message: "Product Api" });
+}
 
 export default handler;
