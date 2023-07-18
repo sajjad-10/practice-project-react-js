@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function Home() {
+    const [productItems, setProductItems] = useState([]);
     const titleInputRef = useRef();
     const priceInputRef = useRef();
 
@@ -20,8 +21,15 @@ export default function Home() {
             },
         });
 
-        const responseData = await response.json()
+        const responseData = await response.json();
         console.log(responseData);
+    }
+
+    async function showProductHandler() {
+        const response = await fetch("/api/product");
+        const responseData = await response.json();
+        setProductItems(responseData.products);
+        console.log(responseData.products);
     }
     return (
         <>
@@ -56,6 +64,14 @@ export default function Home() {
                     </div>
                     <button>Add</button>
                 </form>
+                <div>
+                    <button onClick={showProductHandler}>Show Products</button>
+                    <ul>
+                        {productItems.map((item, index) => (
+                            <li key={index}>{item.title}</li>
+                        ))}
+                    </ul>
+                </div>
             </main>
         </>
     );
