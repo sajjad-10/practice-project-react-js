@@ -17,8 +17,8 @@ About: A collection of short projects for practicing and learning react.js & nex
 
 #### project list
 
-| Name                                                                                           | Description                  |
-| :--------------------------------------------------------------------------------------------- | :--------------------------- |
-| [Next Crash app](https://github.com/sajjad-10/)                                                | Next **Training**            |
-| [Next API Routes](https://github.com/sajjad-10/)                                      | Next API Routes & add Backend **Training**            |
-| [-Shopping website](https://github.com/sajjad-10/practice-project-react-js/tree/main/shopping) | simple Next shopping website |
+| Name                                              | Description                                |
+| :------------------------------------------------ | :----------------------------------------- |
+| [Next Crash app](https://github.com/sajjad-10/)   | Next **Training**                          |
+| [Next API Routes](https://github.com/sajjad-10/)  | Next API Routes & add Backend **Training** |
+| [Shopping website](https://github.com/sajjad-10/) | simple Next shopping website               |
