@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import ProductForm from "./ProductForm";
 import Search from "./Search";
 import ProductList from "./ProductList";
@@ -6,27 +6,9 @@ import ProductList from "./ProductList";
 function Products() {
     const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_FIREBASE_DATABASE_URL}/products.json`)
-            .then((response) => {
-                return response.json();
-            })
-            .then((responseData) => {
-                const loadedProducts = [];
-                for (const item in responseData) {
-                    loadedProducts.push({
-                        id: item,
-                        title: responseData[item].title,
-                        amount: responseData[item].amount,
-                    });
-                }
-                setProducts(loadedProducts);
-            });
+    const searchProductsHandler = useCallback((items) => {
+        setProducts(items);
     }, []);
-
-    const searchProductsHandler = (items)=>{
-        setProducts(items)
-    }
 
     const addProductHandler = (newProduct) => {
         fetch(`${process.env.REACT_APP_FIREBASE_DATABASE_URL}/products.json`, {

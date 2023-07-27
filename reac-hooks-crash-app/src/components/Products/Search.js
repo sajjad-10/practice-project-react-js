@@ -28,7 +28,7 @@ const Search = React.memo((props) => {
                         amount: responseData[item].amount,
                     });
                 }
-                // onLoadProducts(loadedProducts);
+                onLoadProducts(loadedProducts);                
             });
     }, [searchItem, onLoadProducts]);
     return (
