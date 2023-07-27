@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import Card from "../UI/Card";
 
@@ -8,35 +8,42 @@ const Search = React.memo((props) => {
     const { onLoadProducts } = props;
     const [searchItem, setSearchItem] = useState("");
 
+    const inputRef = useRef();
+
     useEffect(() => {
-        const query =
-            searchItem.length === 0
-                ? ""
-                : `?orderBy="title"&equalTo="${searchItem}"`;
-        fetch(
-            `${process.env.REACT_APP_FIREBASE_DATABASE_URL}/products.json${query}`
-        )
-            .then((response) => {
-                return response.json();
-            })
-            .then((responseData) => {
-                const loadedProducts = [];
-                for (const item in responseData) {
-                    loadedProducts.push({
-                        id: item,
-                        title: responseData[item].title,
-                        amount: responseData[item].amount,
+        setTimeout(() => {
+            if (searchItem === inputRef.current.value) {
+                const query =
+                    searchItem.length === 0
+                        ? ""
+                        : `?orderBy="title"&equalTo="${searchItem}"`;
+                fetch(
+                    `${process.env.REACT_APP_FIREBASE_DATABASE_URL}/products.json${query}`
+                )
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((responseData) => {
+                        const loadedProducts = [];
+                        for (const item in responseData) {
+                            loadedProducts.push({
+                                id: item,
+                                title: responseData[item].title,
+                                amount: responseData[item].amount,
+                            });
+                        }
+                        onLoadProducts(loadedProducts);
                     });
-                }
-                onLoadProducts(loadedProducts);                
-            });
-    }, [searchItem, onLoadProducts]);
+            }
+        }, 500);
+    }, [searchItem, onLoadProducts, inputRef]);
     return (
         <section className="search">
             <Card>
                 <div className="search-input">
                     <label>جست و جو</label>
                     <input
+                        ref={inputRef}
                         type="text"
                         value={searchItem}
                         onChange={(event) => {
