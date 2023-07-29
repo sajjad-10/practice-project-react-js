@@ -6,7 +6,7 @@ const initialState = { cart: { cartItems: [] } };
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "ADD_ITEMS": {
+        case "ADD_TO_CART": {
             const newItem = action.payload;
             const existingItem = state.cart.cartItems.find((item) => {
                 item.slug === newItem.slug;
@@ -15,7 +15,7 @@ const reducer = (state, action) => {
                 ? state.cart.cartItems.map((item) =>
                       item.title === existingItem.title ? newItem : item
                   )
-                : [...state.cart.item, newItem];
+                : [...state.cart.cartItems, newItem];
             return { ...state, cart: { ...state.cart, cartItems } };
         }
         default:
