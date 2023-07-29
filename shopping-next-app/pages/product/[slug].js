@@ -10,9 +10,7 @@ const ProductPage = () => {
     const { query } = useRouter();
     const { slug } = query;
 
-    const product = productItems.find((item) => {
-        return item.slug === slug;
-    });
+    const product = productItems.find((pItem) => pItem.slug === slug);
     if (!product) {
         return <div>Product not found.</div>;
     }
@@ -20,7 +18,13 @@ const ProductPage = () => {
         const existingItem = state.cart.cartItems.find(
             (item) => item.slug === product.slug
         );
+        
         const qty = existingItem ? existingItem.qty + 1 : 1;
+
+        if (product.count < qty) {
+            alert("Product is out.");
+            return;
+        }
         dispatch({ type: "ADD_TO_CART", payload: { ...product, qty } });
     };
     return (

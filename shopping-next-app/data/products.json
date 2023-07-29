@@ -14,7 +14,7 @@
         "slug": "book-2",
         "description": "New Book",
         "cat": "Books",
-        "count": 10,
+        "count": 5,
         "image": "/images/book.jpg"
     }
 ]
