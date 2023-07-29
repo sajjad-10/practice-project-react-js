@@ -9,7 +9,7 @@ const reducer = (state, action) => {
         case "ADD_TO_CART": {
             const newItem = action.payload;
             const existingItem = state.cart.cartItems.find((item) => {
-                item.slug === newItem.slug;
+              return  item.slug === newItem.slug;
             });
             const cartItems = existingItem
                 ? state.cart.cartItems.map((item) =>
