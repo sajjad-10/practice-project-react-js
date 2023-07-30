@@ -9,6 +9,7 @@ const ProductPage = () => {
     const { state, dispatch } = useContext(CartContext);
     const { query } = useRouter();
     const { slug } = query;
+    const router = useRouter();
 
     const product = productItems.find((pItem) => pItem.slug === slug);
     if (!product) {
@@ -26,6 +27,7 @@ const ProductPage = () => {
             return;
         }
         dispatch({ type: "ADD_TO_CART", payload: { ...product, qty } });
+        router.push("/cart")
     };
     return (
         <>
