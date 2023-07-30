@@ -56,12 +56,27 @@ const CartPage = () => {
                                                 {item.price}
                                             </td>
                                             <td className="p-5 text-center">
-                                                <button onClick={()=> removeItemHandler(item)}>Remove</button>
+                                                <button
+                                                    onClick={() =>
+                                                        removeItemHandler(item)
+                                                    }
+                                                >
+                                                    Remove
+                                                </button>
                                             </td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
+                        </div>
+                        <div className="px-5">
+                            <div className="pb-5">
+                                Total Price:{" "}
+                                {cartItems.reduce(
+                                    (acc, cur) => acc + cur.qty * cur.price,
+                                    0
+                                )}
+                            </div>
                         </div>
                     </div>
                 )}
