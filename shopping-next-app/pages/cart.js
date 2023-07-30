@@ -8,6 +8,9 @@ const CartPage = () => {
     const {
         cart: { cartItems },
     } = state;
+    const removeItemHandler = (item) => {
+        dispatch({ type: "REMOVE_ITEM", payload: item });
+    };
     return (
         <>
             <Layout title="Shopping Cart">
@@ -53,7 +56,7 @@ const CartPage = () => {
                                                 {item.price}
                                             </td>
                                             <td className="p-5 text-center">
-                                                <button>Remove</button>
+                                                <button onClick={()=> removeItemHandler(item)}>Remove</button>
                                             </td>
                                         </tr>
                                     ))}

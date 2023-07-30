@@ -9,13 +9,19 @@ const reducer = (state, action) => {
         case "ADD_TO_CART": {
             const newItem = action.payload;
             const existingItem = state.cart.cartItems.find((item) => {
-              return  item.slug === newItem.slug;
+                return item.slug === newItem.slug;
             });
             const cartItems = existingItem
                 ? state.cart.cartItems.map((item) =>
                       item.title === existingItem.title ? newItem : item
                   )
                 : [...state.cart.cartItems, newItem];
+            return { ...state, cart: { ...state.cart, cartItems } };
+        }
+        case "REMOVE_ITEM": {
+            const cartItems = state.cart.cartItems.filter((item) => {
+                return item.slug !== action.payload.slug;
+            });
             return { ...state, cart: { ...state.cart, cartItems } };
         }
         default:
