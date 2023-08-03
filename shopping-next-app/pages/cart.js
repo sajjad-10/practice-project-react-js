@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
 import { useContext } from "react";
 import { CartContext } from "@/context/Cart";
 
 const CartPage = () => {
-    const { state, dispatch } = useContext(CartContext);
+    const { state, dispatch } = useContext(CartContext);    
     const {
         cart: { cartItems },
     } = state;
@@ -90,4 +91,4 @@ const CartPage = () => {
     );
 };
 
-export default CartPage;
+export default dynamic(() => Promise.resolve(CartPage), {ssr:false}) ;
